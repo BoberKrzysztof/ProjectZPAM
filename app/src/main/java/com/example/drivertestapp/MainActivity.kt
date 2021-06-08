@@ -1,4 +1,4 @@
-package com.example.drivertestapp
+ package com.example.drivertestapp
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -10,7 +10,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val x = 1
+
         nextActivity()
     }
 
