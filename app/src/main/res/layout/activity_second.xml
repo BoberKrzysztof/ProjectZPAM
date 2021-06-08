@@ -15,7 +15,7 @@
         android:importantForAutofill="no"
         android:inputType="textPersonName"
         android:labelFor="@id/loginEditText"
-        android:text="@string/loginEditText"
+        android:text="@string/empty"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.601"
