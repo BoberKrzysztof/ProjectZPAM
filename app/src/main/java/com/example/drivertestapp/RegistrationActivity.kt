@@ -3,6 +3,7 @@ package com.example.drivertestapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.TextUtils
 import android.widget.Button
 import android.widget.CheckBox
 import android.widget.EditText
@@ -16,16 +17,55 @@ class RegistrationActivity : AppCompatActivity() {
         // items which can be find on activity_registration screen
         val backImage = findViewById<ImageView>(R.id.backImage)
         val registerButton = findViewById<Button>(R.id.registerButton)
+        val firstNameEdit = findViewById<EditText>(R.id.firstNameEdit)
+        val surnameEdit = findViewById<EditText>(R.id.surnameEdit)
+        val loginEdit = findViewById<EditText>(R.id.loginEdit)
         val passEdit = findViewById<EditText>(R.id.passEdit)
         val rPassEdit = findViewById<EditText>(R.id.rPassEdit)
-        val maleCheckBox = findViewById<CheckBox>(R.id.maleCheckBox)
         val femaleCheckBox = findViewById<CheckBox>(R.id.femaleCheckBox)
+        val maleCheckBox = findViewById<CheckBox>(R.id.maleCheckBox)
 
         // methods
-        comparePass(registerButton, passEdit, rPassEdit)
+        //comparePass(registerButton, passEdit, rPassEdit)
         backToLogin(backImage)
         chooseSex(maleCheckBox, femaleCheckBox)
+        /*isAllFilledUp(
+            firstNameEdit,
+            surnameEdit,
+            loginEdit,
+            passEdit,
+            rPassEdit,
+            registerButton,
+            femaleCheckBox,
+            maleCheckBox
+        )*/
     }
+
+    private fun isAllFilledUp(
+        name: EditText,
+        surname: EditText,
+        login: EditText,
+        pass: EditText,
+        rPass: EditText,
+        button: Button,
+        c1: CheckBox,
+        c2: CheckBox
+    ) {
+        val str1 = name.text.toString()
+        val str2 = surname.text.toString()
+        val str3 = login.text.toString()
+        val str4 = pass.text.toString()
+        val str5 = rPass.text.toString()
+        button.setOnClickListener {
+            if (str1.isEmpty()) {
+                c1.isChecked = true
+            }
+            else {
+                c2.isChecked = false
+            }
+        }
+    }
+
 
     private fun chooseSex(c1: CheckBox, c2: CheckBox) {
         c1.setOnClickListener {
@@ -55,4 +95,5 @@ class RegistrationActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
+
 }
