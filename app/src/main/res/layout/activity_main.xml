@@ -10,50 +10,44 @@
         android:id="@+id/startButton"
         android:layout_width="281dp"
         android:layout_height="59dp"
+        android:fontFamily="sans-serif-medium"
         android:text="@string/button"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.364" />
+        app:layout_constraintVertical_bias="0.404" />
 
     <ImageView
         android:id="@+id/mainActivityImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:contentDescription="@string/obraz"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/startButton"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/mainpage"
-        android:contentDescription="@string/obraz" />
+        app:srcCompat="@drawable/mainpage" />
 
     <TextView
         android:id="@+id/infoText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:layout_marginBottom="10dp"
         android:text="@string/info"
         app:layout_constraintBottom_toTopOf="@+id/startButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
-        android:id="@+id/welcomeImage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="107dp"
-        android:contentDescription="@string/obraz2"
-        app:layout_constraintBottom_toTopOf="@+id/infoText"
+        android:id="@+id/mainActivituImage2"
+        android:layout_width="389dp"
+        android:layout_height="189dp"
+        android:contentDescription="@string/obraz"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/welcome" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
