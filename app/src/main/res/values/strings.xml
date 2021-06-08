@@ -4,4 +4,6 @@
     <string name="obraz"> </string>
     <string name="info">Click START if you want to join to the test</string>
     <string name="obraz2"> </string>
+    <string name="loginEditText"> </string>
+    <string name="loginLabel">Login:</string>
 </resources>
