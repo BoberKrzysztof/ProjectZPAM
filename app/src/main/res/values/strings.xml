@@ -3,7 +3,17 @@
     <string name="button">Start</string>
     <string name="obraz"> </string>
     <string name="info">Click START if you want to join to the test</string>
-    <string name="obraz2"> </string>
-    <string name="loginEditText"> </string>
+    <string name="empty"> </string>
     <string name="loginLabel">Login:</string>
+    <string name="login">LOG IN</string>
+    <string name="registerLabel">Register</string>
+    <string name="textView3">Do not have an account?</string>
+    <string name="textView4">------------------OR------------------</string>
+    <string name="passwordLabel">Password:</string>
+    <string name="imie">Name:</string>
+    <string name="nazwisko">Surname:</string>
+    <string name="repeatPass">Repeat password:</string>
+    <string name="male">Male</string>
+    <string name="sex">Sex:</string>
+    <string name="female">Female</string>
 </resources>
