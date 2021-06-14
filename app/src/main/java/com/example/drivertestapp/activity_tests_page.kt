@@ -10,14 +10,23 @@ class activity_tests_page : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tests_page)
 
-        nextActivity()
+        nextActivityColor()
+        nextActivityReaction()
     }
 
 
-    private fun nextActivity() {
+    private fun nextActivityColor() {
         val startButton = findViewById<Button>(R.id.Color_perception_button)
         startButton.setOnClickListener {
             val intent = Intent(this, Activity_color_test::class.java)
+            startActivity(intent)
+        }
+    }
+
+    private fun nextActivityReaction() {
+        val startButton = findViewById<Button>(R.id.Reaction_test_button)
+        startButton.setOnClickListener {
+            val intent = Intent(this, Activity_reaction_test::class.java)
             startActivity(intent)
         }
     }
