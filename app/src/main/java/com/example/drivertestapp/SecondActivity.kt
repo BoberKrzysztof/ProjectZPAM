@@ -12,12 +12,21 @@ class SecondActivity : AppCompatActivity() {
         setContentView(R.layout.activity_second)
 
         registerActivityOpen()
+        nextActivity()
     }
 
     private fun registerActivityOpen() {
         val registerLabel = findViewById<TextView>(R.id.registerLabel)
         registerLabel.setOnClickListener {
             val intent = Intent(this, RegistrationActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
+    private fun nextActivity() {
+        val startButton = findViewById<Button>(R.id.loginButton)
+        startButton.setOnClickListener {
+            val intent = Intent(this, activity_tests_page::class.java)
             startActivity(intent)
         }
     }
