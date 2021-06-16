@@ -13,6 +13,7 @@ class activity_tests_page : AppCompatActivity() {
         nextActivityColor()
         nextActivityReaction()
         nextActivityIntelligent()
+        nextActivityCISS()
     }
 
 
@@ -36,6 +37,14 @@ class activity_tests_page : AppCompatActivity() {
         val startButton = findViewById<Button>(R.id.Inteligence_test_button)
         startButton.setOnClickListener {
             val intent = Intent(this, Activity_intelligent_test::class.java)
+            startActivity(intent)
+        }
+    }
+
+    private fun nextActivityCISS() {
+        val startButton = findViewById<Button>(R.id.CISS_test_button)
+        startButton.setOnClickListener {
+            val intent = Intent(this, Activity_CISS::class.java)
             startActivity(intent)
         }
     }

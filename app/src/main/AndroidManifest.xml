@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DriverTestApp">
-        <activity android:name=".Activity_intelligent_test"></activity>
+        <activity android:name=".Activity_CISS"></activity>
+        <activity android:name=".Activity_intelligent_test" />
         <activity android:name=".Activity_reaction_test" />
         <activity android:name=".Activity_color_test" />
         <activity android:name=".activity_tests_page" />
