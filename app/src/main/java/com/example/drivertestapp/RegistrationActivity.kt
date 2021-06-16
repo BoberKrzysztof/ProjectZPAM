@@ -26,7 +26,7 @@ class RegistrationActivity : AppCompatActivity() {
         val maleCheckBox = findViewById<CheckBox>(R.id.maleCheckBox)
 
         // methods
-        //comparePass(registerButton, passEdit, rPassEdit)
+        comparePass(registerButton, passEdit, rPassEdit)
         backToLogin(backImage)
         chooseSex(maleCheckBox, femaleCheckBox)
         /*isAllFilledUp(

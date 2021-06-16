@@ -10,11 +10,18 @@ class SecondActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_second)
-
+        
+        loginOpen()
         registerActivityOpen()
         nextActivity()
     }
-
+    private fun loginOpen(){
+        val login = findViewById<Button>(R.id.loginButton)
+        login.setOnClickListener {
+            val intent = Intent(this, activity_tests_page::class.java)
+            startActivity(intent)
+        }
+    }
     private fun registerActivityOpen() {
         val registerLabel = findViewById<TextView>(R.id.registerLabel)
         registerLabel.setOnClickListener {
