@@ -10,7 +10,7 @@
         android:id="@+id/textView18"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="600dp"
+        android:layout_marginBottom="650dp"
         android:text="Intelligent Test"
         android:textAlignment="textStart"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
@@ -21,10 +21,10 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="264dp"
-        android:layout_height="261dp"
-        android:layout_marginBottom="300dp"
+        android:id="@+id/question_image"
+        android:layout_width="400dp"
+        android:layout_height="300dp"
+        android:layout_marginBottom="350dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -32,89 +32,130 @@
         app:srcCompat="@drawable/test1" />
 
     <ImageView
-        android:id="@+id/imageView5"
+        android:id="@+id/answer_upper_image"
         android:layout_width="300dp"
         android:layout_height="75dp"
         android:layout_marginBottom="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView6"
+        app:layout_constraintBottom_toTopOf="@+id/answer_lower_image"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4"
+        app:layout_constraintTop_toBottomOf="@+id/question_image"
         app:layout_constraintVertical_bias="0.482"
         app:srcCompat="@drawable/test1_odp1" />
 
     <ImageView
-        android:id="@+id/imageView6"
+        android:id="@+id/answer_lower_image"
         android:layout_width="300dp"
         android:layout_height="75dp"
-        android:layout_marginBottom="100dp"
+        android:layout_marginBottom="125dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/test1_odp2" />
 
-    <RadioButton
-        android:id="@+id/radioButton"
-        android:layout_width="32dp"
-        android:layout_height="44dp"
-        android:layout_marginTop="600dp"
-        android:layout_marginEnd="25dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/radioButton5"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <RadioButton
-        android:id="@+id/radioButton2"
-        android:layout_width="32dp"
-        android:layout_height="44dp"
-        android:layout_marginTop="325dp"
+    <Button
+        android:id="@+id/next_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="680dp"
+        android:text="Next"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <RadioButton
-        android:id="@+id/radioButton3"
-        android:layout_width="32dp"
-        android:layout_height="44dp"
-        android:layout_marginTop="325dp"
-        android:layout_marginEnd="25dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/radioButton2"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <RadioButton
-        android:id="@+id/radioButton4"
-        android:layout_width="32dp"
-        android:layout_height="44dp"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="600dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/radioButton5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <RadioButton
-        android:id="@+id/radioButton5"
-        android:layout_width="32dp"
-        android:layout_height="44dp"
-        android:layout_marginTop="600dp"
+    <ProgressBar
+        android:id="@+id/progressbar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="250dp"
+        android:max="100"
+        android:progress="0"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <RadioButton
-        android:id="@+id/radioButton6"
-        android:layout_width="32dp"
-        android:layout_height="44dp"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="325dp"
+    <TextView
+        android:id="@+id/procent_text"
+        android:layout_width="64dp"
+        android:layout_height="18dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="180dp"
+        android:text="0/100%"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/radioButton2"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/progressbar"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <RadioGroup
+        android:layout_width="311dp"
+        android:layout_height="219dp"
+        android:layout_marginTop="400dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" >
+
+        <RadioGroup
+            android:id="@+id/RadioGroupUp"
+            android:layout_width="match_parent"
+            android:layout_height="72dp"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/answer1"
+                android:layout_width="32dp"
+                android:layout_height="44dp"
+                android:layout_marginLeft="45dp"
+                android:layout_marginTop="25dp" />
+
+            <RadioButton
+                android:id="@+id/answer2"
+                android:layout_width="32dp"
+                android:layout_height="44dp"
+                android:layout_marginLeft="65dp"
+                android:layout_marginTop="25dp" />
+
+            <RadioButton
+                android:id="@+id/answer3"
+                android:layout_width="32dp"
+                android:layout_height="44dp"
+                android:layout_marginLeft="65dp"
+                android:layout_marginTop="25dp" />
+
+        </RadioGroup>
+
+        <RadioGroup
+            android:id="@+id/RadioGroupLow"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/answer4"
+                android:layout_width="32dp"
+                android:layout_height="44dp"
+                android:layout_marginLeft="45dp"
+                android:layout_marginTop="85dp" />
+
+            <RadioButton
+                android:id="@+id/answer5"
+                android:layout_width="32dp"
+                android:layout_height="44dp"
+                android:layout_marginLeft="65dp"
+                android:layout_marginTop="85dp" />
+
+            <RadioButton
+                android:id="@+id/answer6"
+                android:layout_width="32dp"
+                android:layout_height="44dp"
+                android:layout_marginLeft="65dp"
+                android:layout_marginTop="85dp" />
+        </RadioGroup>
+
+    </RadioGroup>
 </androidx.constraintlayout.widget.ConstraintLayout>

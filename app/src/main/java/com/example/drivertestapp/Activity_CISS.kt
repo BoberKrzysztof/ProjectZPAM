@@ -2,10 +2,7 @@ package com.example.drivertestapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.RadioButton
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 
 class Activity_CISS : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,6 +39,8 @@ class Activity_CISS : AppCompatActivity() {
         )
         val answers_list = ArrayList<String>()
 
+        var radio_group = findViewById<RadioGroup>(R.id.radioGroup)
+
         var i = 0
 
 
@@ -50,36 +49,31 @@ class Activity_CISS : AppCompatActivity() {
                 answers_list.add(question_list[i] + "\n" + answ1.text)
                 i++
                 question.setText(question_list[i])
-                answ1.setChecked(false)
             }
             else if (answ2.isChecked){
                 answers_list.add(question_list[i] + "\n" + answ2.text)
                 i++
                 question.setText(question_list[i])
-                answ2.setChecked(false)
             }
             else if (answ3.isChecked){
                 answers_list.add(question_list[i] + "\n" + answ3.text)
                 i++
                 question.setText(question_list[i])
-                answ3.setChecked(false)
             }
             else if (answ4.isChecked){
                 answers_list.add(question_list[i] + "\n" + answ4.text)
                 i++
                 question.setText(question_list[i])
-                answ4.setChecked(false)
             }
             else if (answ5.isChecked){
                 answers_list.add(question_list[i] + "\n" + answ5.text)
                 i++
                 question.setText(question_list[i])
-                answ5.setChecked(false)
             }
             else{
                 Toast.makeText(this, "Please enter your answer", Toast.LENGTH_SHORT).show()
             }
-
+            radio_group.clearCheck()
             }
         }
     }
