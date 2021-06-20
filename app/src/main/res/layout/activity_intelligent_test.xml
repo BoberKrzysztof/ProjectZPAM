@@ -31,6 +31,18 @@
         app:layout_constraintTop_toBottomOf="@+id/textView18"
         app:srcCompat="@drawable/test1" />
 
+    <Chronometer
+        android:id="@+id/Chronometer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="250dp"
+        android:layout_marginTop="40dp"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ImageView
         android:id="@+id/answer_upper_image"
         android:layout_width="300dp"
@@ -66,7 +78,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ProgressBar
-        android:id="@+id/progressbar"
+        android:id="@+id/progressbar_inteligence"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
@@ -88,17 +100,18 @@
         android:text="0/100%"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/progressbar"
+        app:layout_constraintStart_toEndOf="@+id/progressbar_inteligence"
         app:layout_constraintTop_toTopOf="parent" />
 
     <RadioGroup
+        android:id="@+id/radioGrourMain"
         android:layout_width="311dp"
         android:layout_height="219dp"
         android:layout_marginTop="400dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" >
+        app:layout_constraintTop_toTopOf="parent">
 
         <RadioGroup
             android:id="@+id/RadioGroupUp"
