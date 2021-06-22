@@ -1,6 +1,7 @@
 package com.example.drivertestapp
 
 import android.animation.ObjectAnimator
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
@@ -65,16 +66,15 @@ class Activity_intelligent_test : AppCompatActivity() {
         val chronometr = findViewById<Chronometer>(R.id.Chronometer)
 
 
-
         fun press_next_button() {
             var i = 0
             var answer: Int
             var sum = 0
             next.setOnClickListener {
 
-                fun change_image(){
+                fun change_image() {
                     i++
-                    progress_procent.incrementProgressBy(100/questions.size)
+                    progress_procent.incrementProgressBy(100 / 30)
                     procent_text.setText(progress_procent.progress.toString())
                     procent_text.append("/100%")
                     question_images.setImageResource(questions[i])
@@ -84,35 +84,21 @@ class Activity_intelligent_test : AppCompatActivity() {
                     radio_group_up.clearCheck()
                 }
 
-                if (i == 0){
+                if (i == 0) {
                     chronometr.start()
                 }
 
-                if (i == questions.size-2){
-                    chronometr.stop()
-                    //Toast.makeText(this, "Your result: $sum/" + questions.size , Toast.LENGTH_SHORT).show()
-                    next.setText("Finish")
-                }
-
-                if (i == questions.size-1){
-                    val window = PopupWindow(this)
-                    val view = layoutInflater.inflate(R.layout.popup_inteligence,null)
-                    window.contentView = view
-                    val time = findViewById<TextView>(R.id.final_time)
-                    time.setText(chronometr.base.toString())
-                    val result = findViewById<TextView>(R.id.final_result)
-                    result.append("Your result: ")
-                    result.append(sum.toString())
-                    result.append("/")
-                    result.append(questions.size.toString())
-                    val submit = findViewById<Button>(R.id.submit_button)
-                    submit.setOnClickListener {
-                        window.dismiss()
+                if (i == questions.size - 1) {
+                    next.setOnClickListener {
+                        Storage.sum = sum
+                        chronometr.stop()
+                        var time = chronometr.base
+                        val intent = Intent(this, Activity_inteligence_test2::class.java)
+                        startActivity(intent)
                     }
-                    window.animationStyle
                 }
 
-                if (i < questions.size-1) {
+                if (i < questions.size - 1) {
                     if (answ1.isChecked) {
                         answer = 1
                         if (answer == list_answers[i]) {
@@ -158,16 +144,46 @@ class Activity_intelligent_test : AppCompatActivity() {
 
         }
 
-        //sposób na wygaszenia jakiegość wiersza. próbowałem kilka sposobów ale nie udało mi tego rozwiązać
-        //próbowałem zmiane radiogroup na layout, a wszystko zrobić w jednym RadioGroup nie można ponieważ, RadioGroup można ustawić tylko w pozycji wertykalnej czy horyzontalnej
-        //nie wiem jak zrobić tak żeby ono w czasie rzeczywistym sprawdzało naciśnięcie jakiegoś radiobuttona
-        if (answ1.isChecked or answ2.isChecked or answ3.isChecked) {
-            radio_group_low.clearCheck()
+        fun check_radiobutton(){
+            answ1.setOnClickListener {
+                if (answ4.isChecked or answ5.isChecked or answ6.isChecked){
+                    radio_group_low.clearCheck()
+                }
             }
-        if(answ4.isChecked or answ5.isChecked or answ6.isChecked) {
-            radio_group_up.clearCheck()
+            answ2.setOnClickListener {
+                if (answ4.isChecked or answ5.isChecked or answ6.isChecked){
+                    radio_group_low.clearCheck()
+                }
+            }
+            answ3.setOnClickListener {
+                if (answ4.isChecked or answ5.isChecked or answ6.isChecked){
+                    radio_group_low.clearCheck()
+                }
+            }
+            answ4.setOnClickListener {
+                if (answ1.isChecked or answ2.isChecked or answ3.isChecked){
+                    radio_group_up.clearCheck()
+                }
+            }
+            answ5.setOnClickListener {
+                if (answ1.isChecked or answ2.isChecked or answ3.isChecked){
+                    radio_group_up.clearCheck()
+                }
+            }
+            answ6.setOnClickListener {
+                if (answ1.isChecked or answ2.isChecked or answ3.isChecked){
+                    radio_group_up.clearCheck()
+                }
+            }
         }
+
+        check_radiobutton()
         press_next_button()
+
+
+
+
+
 
 
     }
