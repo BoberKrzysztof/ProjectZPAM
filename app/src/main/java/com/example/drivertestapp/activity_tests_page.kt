@@ -4,6 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ProgressBar
+import android.widget.TextView
 
 class activity_tests_page : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -14,6 +16,8 @@ class activity_tests_page : AppCompatActivity() {
         nextActivityReaction()
         nextActivityIntelligent()
         nextActivityCISS()
+        inteligenceResult()
+        CISSResult()
     }
 
 
@@ -38,6 +42,7 @@ class activity_tests_page : AppCompatActivity() {
         startButton.setOnClickListener {
             val intent = Intent(this, Activity_intelligent_test::class.java)
             startActivity(intent)
+            startButton.setEnabled(false)
         }
     }
 
@@ -46,6 +51,22 @@ class activity_tests_page : AppCompatActivity() {
         startButton.setOnClickListener {
             val intent = Intent(this, Activity_CISS::class.java)
             startActivity(intent)
+            startButton.setEnabled(false)
         }
+    }
+
+    private fun inteligenceResult() {
+        val result = findViewById<TextView>(R.id.inteligence_result)
+        val progres = findViewById<ProgressBar>(R.id.progressBar_inteligence_testPage)
+        val sum = Storage.sum2
+
+        result.append(sum.toString())
+        result.append("/30")
+
+        progres.setProgress(sum * (100 / 30))
+    }
+
+    private fun CISSResult() {
+
     }
 }

@@ -1,5 +1,6 @@
 package com.example.drivertestapp
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
@@ -45,6 +46,11 @@ class Activity_CISS : AppCompatActivity() {
 
 
         next.setOnClickListener{
+
+            if (i == question_list.size-1){
+                next.setText("Send")
+            }
+
             if (answ1.isChecked){
                 answers_list.add(question_list[i] + "\n" + answ1.text)
                 i++
@@ -74,6 +80,15 @@ class Activity_CISS : AppCompatActivity() {
                 Toast.makeText(this, "Please enter your answer", Toast.LENGTH_SHORT).show()
             }
             radio_group.clearCheck()
+
+
+            if (i == question_list.size){
+                next.setOnClickListener {
+
+                    val intent = Intent(this, activity_tests_page::class.java)
+                    startActivity(intent)
+                }
+            }
             }
         }
     }

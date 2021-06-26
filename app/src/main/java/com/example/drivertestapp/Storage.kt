@@ -6,5 +6,6 @@ class Storage {
         var sum: Int = 0
         var sum2: Int = 0
         var time: Long = 0
+        lateinit var CISS_result: ArrayList<String>
     }
 }

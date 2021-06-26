@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.SystemClock
+import android.os.SystemClock.elapsedRealtime
 import android.widget.*
 
 
@@ -18,7 +19,22 @@ class Activity_inteligence_test2 : AppCompatActivity() {
             R.drawable.test12,
             R.drawable.test13,
             R.drawable.test14,
-            R.drawable.test15
+            R.drawable.test15,
+            R.drawable.test16,
+            R.drawable.test17,
+            R.drawable.test18,
+            R.drawable.test19,
+            R.drawable.test20,
+            R.drawable.test21,
+            R.drawable.test22,
+            R.drawable.test23,
+            R.drawable.test24,
+            R.drawable.test25,
+            R.drawable.test26,
+            R.drawable.test27,
+            R.drawable.test28,
+            R.drawable.test29,
+            R.drawable.test30
         )
         val answers_upper_line = arrayOf(
             R.drawable.test10_odp1,
@@ -26,7 +42,22 @@ class Activity_inteligence_test2 : AppCompatActivity() {
             R.drawable.test12_odp1,
             R.drawable.test13_odp1,
             R.drawable.test14_odp1,
-            R.drawable.test15_odp1
+            R.drawable.test15_odp1,
+            R.drawable.test16_odp1,
+            R.drawable.test17_odp1,
+            R.drawable.test18_odp1,
+            R.drawable.test19_odp1,
+            R.drawable.test20_odp1,
+            R.drawable.test21_odp1,
+            R.drawable.test22_odp1,
+            R.drawable.test23_odp1,
+            R.drawable.test24_odp1,
+            R.drawable.test25_odp1,
+            R.drawable.test26_odp1,
+            R.drawable.test27_odp1,
+            R.drawable.test28_odp1,
+            R.drawable.test29_odp1,
+            R.drawable.test30_odp1
         )
         val answers_lower_line = arrayOf(
             R.drawable.test10_odp2,
@@ -34,10 +65,24 @@ class Activity_inteligence_test2 : AppCompatActivity() {
             R.drawable.test12_odp2,
             R.drawable.test13_odp2,
             R.drawable.test14_odp2,
-            R.drawable.test15_odp2
-
+            R.drawable.test15_odp2,
+            R.drawable.test16_odp2,
+            R.drawable.test17_odp2,
+            R.drawable.test18_odp2,
+            R.drawable.test19_odp2,
+            R.drawable.test20_odp2,
+            R.drawable.test21_odp2,
+            R.drawable.test22_odp2,
+            R.drawable.test23_odp2,
+            R.drawable.test24_odp2,
+            R.drawable.test25_odp2,
+            R.drawable.test26_odp2,
+            R.drawable.test27_odp2,
+            R.drawable.test28_odp2,
+            R.drawable.test29_odp2,
+            R.drawable.test30_odp2
         )
-        val list_answers = arrayOf(8, 8, 5, 8, 7, 5)
+        val list_answers = arrayOf(8, 8, 5, 8, 7, 5, 5, 6, 3, 4, 4, 3, 7, 6, 4, 5, 8, 1, 6, 7, 2)
         val answ1 = findViewById<RadioButton>(R.id.answer1_1)
         val answ2 = findViewById<RadioButton>(R.id.answer2_1)
         val answ3 = findViewById<RadioButton>(R.id.answer3_1)
@@ -63,7 +108,10 @@ class Activity_inteligence_test2 : AppCompatActivity() {
         val radio_group = findViewById<RadioGroup>(R.id.radioGrourMain2)
 
         val chronometr = findViewById<Chronometer>(R.id.chronometer2)
-        chronometr.base = (SystemClock.elapsedRealtime() + Storage.time)
+        val hour = Storage.time/ 3600000
+        val minute = (Storage.time - hour * 3600000)
+        val seconds = (Storage.time - hour * 3600000 - minute * 60000)
+        chronometr.base = ((minute + seconds))
         chronometr.start()
 
         fun press_next_button() {
@@ -90,14 +138,6 @@ class Activity_inteligence_test2 : AppCompatActivity() {
                     next.setText("Finish")
 
                 }
-
-
-                if (i == questions.size - 1) {
-                    Storage.sum2 = sum
-                    val intent = Intent(this, activity_tests_page::class.java)
-                    startActivity(intent)
-                }
-
                 if (i < questions.size - 1) {
                     if (answ1.isChecked) {
                         answer = 1
@@ -149,6 +189,18 @@ class Activity_inteligence_test2 : AppCompatActivity() {
                         change_image()
                     } else {
                         Toast.makeText(this, "Please enter your answer", Toast.LENGTH_SHORT).show()
+                    }
+
+                    if (i == questions.size - 1) {
+                        next.setOnClickListener {
+                            answer = 4
+                            if (answer == list_answers[i]){
+                                sum++
+                            }
+                            Storage.sum2 = sum
+                            val intent = Intent(this, activity_tests_page::class.java)
+                            startActivity(intent)
+                        }
                     }
                 }
 

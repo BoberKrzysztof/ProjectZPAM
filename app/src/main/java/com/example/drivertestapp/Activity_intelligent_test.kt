@@ -88,16 +88,6 @@ class Activity_intelligent_test : AppCompatActivity() {
                     chronometr.start()
                 }
 
-                if (i == questions.size - 1) {
-                    next.setOnClickListener {
-                        Storage.sum = sum
-                        chronometr.stop()
-                        var time = chronometr.base
-                        val intent = Intent(this, Activity_inteligence_test2::class.java)
-                        startActivity(intent)
-                    }
-                }
-
                 if (i < questions.size - 1) {
                     if (answ1.isChecked) {
                         answer = 1
@@ -137,6 +127,24 @@ class Activity_intelligent_test : AppCompatActivity() {
                         change_image()
                     } else {
                         Toast.makeText(this, "Please enter your answer", Toast.LENGTH_SHORT).show()
+                    }
+                    // 1 sec = 23  83  837
+                    // 7 sec = 23  83  470
+                    // 20 sec = 23  83  534
+                    // 1 min 13 sec = 23  83  648
+
+                    if (i == questions.size - 1) {
+                        next.setOnClickListener {
+                            answer = 1
+                            if (answer == list_answers[i]){
+                                sum++
+                            }
+                            Storage.sum = sum
+                            chronometr.stop()
+                            val time = chronometr.base
+                            val intent = Intent(this, Activity_inteligence_test2::class.java)
+                            startActivity(intent)
+                        }
                     }
                 }
 
