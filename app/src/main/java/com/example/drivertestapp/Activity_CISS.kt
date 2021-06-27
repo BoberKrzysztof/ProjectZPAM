@@ -82,9 +82,8 @@ class Activity_CISS : AppCompatActivity() {
             radio_group.clearCheck()
 
 
-            if (i == question_list.size){
+            if (i == question_list.size-1){
                 next.setOnClickListener {
-
                     val intent = Intent(this, activity_tests_page::class.java)
                     startActivity(intent)
                 }

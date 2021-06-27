@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.os.SystemClock
 import android.os.SystemClock.elapsedRealtime
 import android.widget.*
+import kotlin.math.roundToInt
 
 
 class Activity_inteligence_test2 : AppCompatActivity() {
@@ -107,13 +108,6 @@ class Activity_inteligence_test2 : AppCompatActivity() {
         val radio_group_low = findViewById<RadioGroup>(R.id.radio_group_low2)
         val radio_group = findViewById<RadioGroup>(R.id.radioGrourMain2)
 
-        val chronometr = findViewById<Chronometer>(R.id.chronometer2)
-        val hour = Storage.time/ 3600000
-        val minute = (Storage.time - hour * 3600000)
-        val seconds = (Storage.time - hour * 3600000 - minute * 60000)
-        chronometr.base = ((minute + seconds))
-        chronometr.start()
-
         fun press_next_button() {
             var i = 0
             var answer: Int
@@ -122,7 +116,8 @@ class Activity_inteligence_test2 : AppCompatActivity() {
 
                 fun change_image() {
                     i++
-                    progress_procent.incrementProgressBy(100 / 30)
+                    var incriment: Float = (i+9).toFloat()*(100/30)
+                    progress_procent.setProgress(incriment.roundToInt())
                     procent_text.setText(progress_procent.progress.toString())
                     procent_text.append("/100%")
                     question_images.setImageResource(questions[i])
@@ -133,7 +128,6 @@ class Activity_inteligence_test2 : AppCompatActivity() {
                 }
 
                 if (i == questions.size - 2) {
-                    chronometr.stop()
                     //Toast.makeText(this, "Your result: $sum/" + questions.size , Toast.LENGTH_SHORT).show()
                     next.setText("Finish")
 
@@ -193,7 +187,7 @@ class Activity_inteligence_test2 : AppCompatActivity() {
 
                     if (i == questions.size - 1) {
                         next.setOnClickListener {
-                            answer = 4
+                            answer = 2
                             if (answer == list_answers[i]){
                                 sum++
                             }

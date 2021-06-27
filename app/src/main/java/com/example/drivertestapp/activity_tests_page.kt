@@ -12,10 +12,22 @@ class activity_tests_page : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tests_page)
 
-        nextActivityColor()
-        nextActivityReaction()
-        nextActivityIntelligent()
-        nextActivityCISS()
+        if(Storage.color_attempt) {
+            nextActivityColor()
+
+        }
+        if (Storage.inteligence_attempt) {
+            nextActivityIntelligent()
+
+        }
+        if (Storage.CISS_attempt) {
+            nextActivityCISS()
+
+        }
+        if(Storage.reaction_attempt) {
+            nextActivityReaction()
+
+        }
         inteligenceResult()
         CISSResult()
     }
@@ -26,6 +38,7 @@ class activity_tests_page : AppCompatActivity() {
         startButton.setOnClickListener {
             val intent = Intent(this, Activity_color_test::class.java)
             startActivity(intent)
+            Storage.color_attempt = false
         }
     }
 
@@ -34,6 +47,7 @@ class activity_tests_page : AppCompatActivity() {
         startButton.setOnClickListener {
             val intent = Intent(this, Activity_reaction_test::class.java)
             startActivity(intent)
+            Storage.reaction_attempt = false
         }
     }
 
@@ -42,7 +56,7 @@ class activity_tests_page : AppCompatActivity() {
         startButton.setOnClickListener {
             val intent = Intent(this, Activity_intelligent_test::class.java)
             startActivity(intent)
-            startButton.setEnabled(false)
+            Storage.inteligence_attempt = false
         }
     }
 
@@ -51,7 +65,7 @@ class activity_tests_page : AppCompatActivity() {
         startButton.setOnClickListener {
             val intent = Intent(this, Activity_CISS::class.java)
             startActivity(intent)
-            startButton.setEnabled(false)
+            Storage.CISS_attempt = false
         }
     }
 

@@ -5,6 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
+import kotlin.math.roundToInt
 
 class Activity_intelligent_test : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -63,8 +64,6 @@ class Activity_intelligent_test : AppCompatActivity() {
         val radio_group_low = findViewById<RadioGroup>(R.id.RadioGroupLow)
         val radio_group = findViewById<RadioGroup>(R.id.radioGrourMain)
 
-        val chronometr = findViewById<Chronometer>(R.id.Chronometer)
-
 
         fun press_next_button() {
             var i = 0
@@ -74,7 +73,8 @@ class Activity_intelligent_test : AppCompatActivity() {
 
                 fun change_image() {
                     i++
-                    progress_procent.incrementProgressBy(100 / 30)
+                    var incriment: Float = i.toFloat()*(100/30)
+                    progress_procent.setProgress(incriment.roundToInt())
                     procent_text.setText(progress_procent.progress.toString())
                     procent_text.append("/100%")
                     question_images.setImageResource(questions[i])
@@ -82,10 +82,6 @@ class Activity_intelligent_test : AppCompatActivity() {
                     answer_lower_image.setImageResource(answers_lower_line[i])
                     radio_group_low.clearCheck()
                     radio_group_up.clearCheck()
-                }
-
-                if (i == 0) {
-                    chronometr.start()
                 }
 
                 if (i < questions.size - 1) {
@@ -128,10 +124,6 @@ class Activity_intelligent_test : AppCompatActivity() {
                     } else {
                         Toast.makeText(this, "Please enter your answer", Toast.LENGTH_SHORT).show()
                     }
-                    // 1 sec = 23  83  837
-                    // 7 sec = 23  83  470
-                    // 20 sec = 23  83  534
-                    // 1 min 13 sec = 23  83  648
 
                     if (i == questions.size - 1) {
                         next.setOnClickListener {
@@ -140,8 +132,6 @@ class Activity_intelligent_test : AppCompatActivity() {
                                 sum++
                             }
                             Storage.sum = sum
-                            chronometr.stop()
-                            val time = chronometr.base
                             val intent = Intent(this, Activity_inteligence_test2::class.java)
                             startActivity(intent)
                         }
