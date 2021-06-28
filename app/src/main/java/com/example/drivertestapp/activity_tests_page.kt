@@ -30,6 +30,7 @@ class activity_tests_page : AppCompatActivity() {
         }
         inteligenceResult()
         CISSResult()
+        ColorResult()
     }
 
 
@@ -77,10 +78,21 @@ class activity_tests_page : AppCompatActivity() {
         result.append(sum.toString())
         result.append("/30")
 
-        progres.setProgress(sum * (100 / 30))
+        progres.setProgress(sum * (120 / 30))
     }
 
     private fun CISSResult() {
 
+    }
+
+    private fun ColorResult(){
+        val result = findViewById<TextView>(R.id.result_color_testpage)
+        val progres = findViewById<ProgressBar>(R.id.progressBar_color_testpage)
+        val sum = Storage.sum_color
+
+        result.append(sum.toString())
+        result.append("/10")
+
+        progres.setProgress(sum * (100 / 10))
     }
 }

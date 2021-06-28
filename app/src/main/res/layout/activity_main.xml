@@ -12,6 +12,7 @@
         android:layout_height="59dp"
         android:fontFamily="sans-serif-medium"
         android:text="@string/button"
+        android:background="@drawable/button_design"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

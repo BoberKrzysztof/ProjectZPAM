@@ -1,5 +1,6 @@
 package com.example.drivertestapp
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -44,8 +45,9 @@ class Activity_color_test : AppCompatActivity() {
                         "Correct answers: ${sum * 100/values.size}%",
                         Toast.LENGTH_SHORT
                     ).show()
-                    i = 0
-                    sum = 0
+                    Storage.sum_color = sum
+                    val intent = Intent(this, activity_tests_page::class.java)
+                    startActivity(intent)
                 } else {
                     i++
                 }

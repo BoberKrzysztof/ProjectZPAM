@@ -22,7 +22,15 @@
                 android:angle="0"
                 android:type="sweep"
                 android:thicknessRatio="20.0">
-                <solid android:color="#0FCFE8"/>
+
+                <gradient
+                    android:type="sweep"
+                    android:useLevel="false"
+                    android:startColor="#DD1F11"
+                    android:centerColor="#EDD606"
+                    android:endColor="#02CC0A"
+                    android:angle="0"/>
+
             </shape>
         </rotate>
     </item>

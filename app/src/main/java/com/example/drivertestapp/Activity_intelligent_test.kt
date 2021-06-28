@@ -5,6 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
+import kotlin.math.ceil
 import kotlin.math.roundToInt
 
 class Activity_intelligent_test : AppCompatActivity() {
@@ -73,9 +74,9 @@ class Activity_intelligent_test : AppCompatActivity() {
 
                 fun change_image() {
                     i++
-                    var incriment: Float = i.toFloat()*(100/30)
-                    progress_procent.setProgress(incriment.roundToInt())
-                    procent_text.setText(progress_procent.progress.toString())
+                    val incriment = (120/30)
+                    progress_procent.incrementProgressBy(incriment)
+                    procent_text.setText((progress_procent.progress/1.2).toInt().toString())
                     procent_text.append("/100%")
                     question_images.setImageResource(questions[i])
                     answer_upper_image.setImageResource(answers_upper_line[i])

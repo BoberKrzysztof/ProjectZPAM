@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.os.SystemClock
 import android.os.SystemClock.elapsedRealtime
 import android.widget.*
+import kotlin.math.ceil
 import kotlin.math.roundToInt
 
 
@@ -83,7 +84,7 @@ class Activity_inteligence_test2 : AppCompatActivity() {
             R.drawable.test29_odp2,
             R.drawable.test30_odp2
         )
-        val list_answers = arrayOf(8, 8, 5, 8, 7, 5, 5, 6, 3, 4, 4, 3, 7, 6, 4, 5, 8, 1, 6, 7, 2)
+        val list_answers = arrayOf(8, 8, 5, 8, 7, 5, 5, 6, 3, 4, 4, 3, 7, 6, 4, 5, 8, 1, 6, 7, 6)
         val answ1 = findViewById<RadioButton>(R.id.answer1_1)
         val answ2 = findViewById<RadioButton>(R.id.answer2_1)
         val answ3 = findViewById<RadioButton>(R.id.answer3_1)
@@ -100,13 +101,14 @@ class Activity_inteligence_test2 : AppCompatActivity() {
         val next = findViewById<Button>(R.id.next_button2)
         val procent_text = findViewById<TextView>(R.id.procent_text2)
         val progress_procent = findViewById<ProgressBar>(R.id.progressbar_inteligence2)
-        progress_procent.setProgress(9 * (100 / 30))
+        progress_procent.setProgress(8 * (120 / 30))
         procent_text.setText(progress_procent.progress.toString())
         procent_text.append("/100%")
 
         val radio_group_up = findViewById<RadioGroup>(R.id.radio_group_up2)
         val radio_group_low = findViewById<RadioGroup>(R.id.radio_group_low2)
         val radio_group = findViewById<RadioGroup>(R.id.radioGrourMain2)
+
 
         fun press_next_button() {
             var i = 0
@@ -116,9 +118,9 @@ class Activity_inteligence_test2 : AppCompatActivity() {
 
                 fun change_image() {
                     i++
-                    var incriment: Float = (i+9).toFloat()*(100/30)
-                    progress_procent.setProgress(incriment.roundToInt())
-                    procent_text.setText(progress_procent.progress.toString())
+                    val incriment = (120/30)
+                    progress_procent.incrementProgressBy(incriment)
+                    procent_text.setText((progress_procent.progress/1.2).toInt().toString())
                     procent_text.append("/100%")
                     question_images.setImageResource(questions[i])
                     answer_upper_image.setImageResource(answers_upper_line[i])
@@ -187,10 +189,11 @@ class Activity_inteligence_test2 : AppCompatActivity() {
 
                     if (i == questions.size - 1) {
                         next.setOnClickListener {
-                            answer = 2
+                            answer = 6
                             if (answer == list_answers[i]){
                                 sum++
                             }
+
                             Storage.sum2 = sum
                             val intent = Intent(this, activity_tests_page::class.java)
                             startActivity(intent)

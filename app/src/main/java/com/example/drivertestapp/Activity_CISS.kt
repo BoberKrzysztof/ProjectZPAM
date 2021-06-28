@@ -36,58 +36,57 @@ class Activity_CISS : AppCompatActivity() {
             "15. In a stressful situation, I don't worry about",
             "16. In a stressful situation, I avoid difficult topics",
             "17. In a stressful situation, I reach out to friends for advice",
-            "18. I get depressed in stressful situations"
+            "18. I get depressed in stressful situations",
+            ""
         )
-        val answers_list = ArrayList<String>()
+        var answers_list = arrayOf<String>()
 
-        var radio_group = findViewById<RadioGroup>(R.id.radioGroup)
+        val radio_group = findViewById<RadioGroup>(R.id.radioGroup)
 
         var i = 0
 
 
-        next.setOnClickListener{
 
-            if (i == question_list.size-1){
+        next.setOnClickListener {
+
+            if (i == question_list.size - 3) {
                 next.setText("Send")
             }
 
-            if (answ1.isChecked){
-                answers_list.add(question_list[i] + "\n" + answ1.text)
+            if (i == question_list.size - 2) {
+                if(answ1.isChecked or answ2.isChecked or answ3.isChecked or answ4.isChecked or answ5.isChecked) {
+                    Storage.CISS_result = answers_list
+                    val intent = Intent(this, activity_tests_page::class.java)
+                    startActivity(intent)
+                }
+            }
+
+            if (answ1.isChecked) {
+                answers_list += (question_list[i] + "\n" + answ1.text)
                 i++
                 question.setText(question_list[i])
-            }
-            else if (answ2.isChecked){
-                answers_list.add(question_list[i] + "\n" + answ2.text)
+            } else if (answ2.isChecked) {
+                answers_list += (question_list[i] + "\n" + answ2.text)
                 i++
                 question.setText(question_list[i])
-            }
-            else if (answ3.isChecked){
-                answers_list.add(question_list[i] + "\n" + answ3.text)
+            } else if (answ3.isChecked) {
+                answers_list += (question_list[i] + "\n" + answ3.text)
                 i++
                 question.setText(question_list[i])
-            }
-            else if (answ4.isChecked){
-                answers_list.add(question_list[i] + "\n" + answ4.text)
+            } else if (answ4.isChecked) {
+                answers_list += (question_list[i] + "\n" + answ4.text)
                 i++
                 question.setText(question_list[i])
-            }
-            else if (answ5.isChecked){
-                answers_list.add(question_list[i] + "\n" + answ5.text)
+            } else if (answ5.isChecked) {
+                answers_list += (question_list[i] + "\n" + answ5.text)
                 i++
                 question.setText(question_list[i])
-            }
-            else{
+            } else {
                 Toast.makeText(this, "Please enter your answer", Toast.LENGTH_SHORT).show()
             }
             radio_group.clearCheck()
 
 
-            if (i == question_list.size-1){
-                next.setOnClickListener {
-                    val intent = Intent(this, activity_tests_page::class.java)
-                    startActivity(intent)
-                }
-            }
-            }
         }
     }
+}
