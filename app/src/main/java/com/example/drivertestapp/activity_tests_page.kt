@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.TextView
+import android.widget.Toast
 
 class activity_tests_page : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -14,19 +15,27 @@ class activity_tests_page : AppCompatActivity() {
 
         if(Storage.color_attempt) {
             nextActivityColor()
-
+        }
+        else {
+            Toast.makeText(this, "You allready pass the test", Toast.LENGTH_SHORT).show()
         }
         if (Storage.inteligence_attempt) {
             nextActivityIntelligent()
-
+        }
+        else {
+            Toast.makeText(this, "You allready pass the test", Toast.LENGTH_SHORT).show()
         }
         if (Storage.CISS_attempt) {
             nextActivityCISS()
-
+        }
+        else {
+            Toast.makeText(this, "You allready pass the test", Toast.LENGTH_SHORT).show()
         }
         if(Storage.reaction_attempt) {
             nextActivityReaction()
-
+        }
+        else {
+            Toast.makeText(this, "You allready pass the test", Toast.LENGTH_SHORT).show()
         }
         inteligenceResult()
         CISSResult()
