@@ -101,8 +101,8 @@ class Activity_inteligence_test2 : AppCompatActivity() {
         val next = findViewById<Button>(R.id.next_button2)
         val procent_text = findViewById<TextView>(R.id.procent_text2)
         val progress_procent = findViewById<ProgressBar>(R.id.progressbar_inteligence2)
-        progress_procent.setProgress(8 * (120 / 30))
-        procent_text.setText(progress_procent.progress.toString())
+        progress_procent.setProgress(9 * (120 / 30))
+        procent_text.setText((progress_procent.progress/1.2).toInt().toString())
         procent_text.append("/100%")
 
         val radio_group_up = findViewById<RadioGroup>(R.id.radio_group_up2)
