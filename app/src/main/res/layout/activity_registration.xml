@@ -36,6 +36,7 @@
         android:layout_marginTop="20dp"
         android:text="@string/registerLabel"
         android:background="@drawable/button_design"
+        app:backgroundTint="@null"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

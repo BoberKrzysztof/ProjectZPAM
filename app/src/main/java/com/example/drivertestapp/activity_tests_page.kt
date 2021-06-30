@@ -13,30 +13,12 @@ class activity_tests_page : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tests_page)
 
-        if(Storage.color_attempt) {
-            nextActivityColor()
-        }
-        else {
-            Toast.makeText(this, "You allready pass the test", Toast.LENGTH_SHORT).show()
-        }
-        if (Storage.inteligence_attempt) {
-            nextActivityIntelligent()
-        }
-        else {
-            Toast.makeText(this, "You allready pass the test", Toast.LENGTH_SHORT).show()
-        }
-        if (Storage.CISS_attempt) {
-            nextActivityCISS()
-        }
-        else {
-            Toast.makeText(this, "You allready pass the test", Toast.LENGTH_SHORT).show()
-        }
-        if(Storage.reaction_attempt) {
-            nextActivityReaction()
-        }
-        else {
-            Toast.makeText(this, "You allready pass the test", Toast.LENGTH_SHORT).show()
-        }
+
+        nextActivityColor()
+        nextActivityIntelligent()
+        nextActivityCISS()
+        nextActivityReaction()
+
         inteligenceResult()
         CISSResult()
         ColorResult()
@@ -46,36 +28,53 @@ class activity_tests_page : AppCompatActivity() {
     private fun nextActivityColor() {
         val startButton = findViewById<Button>(R.id.Color_perception_button)
         startButton.setOnClickListener {
-            val intent = Intent(this, Activity_color_test::class.java)
-            startActivity(intent)
-            Storage.color_attempt = false
+            if (Storage.color_attempt == false) {
+                Toast.makeText(this, "You allready pass the test", Toast.LENGTH_SHORT).show()
+            } else {
+                val intent = Intent(this, Activity_color_test::class.java)
+                startActivity(intent)
+                Storage.color_attempt = false
+            }
+
         }
     }
 
     private fun nextActivityReaction() {
         val startButton = findViewById<Button>(R.id.Reaction_test_button)
         startButton.setOnClickListener {
-            val intent = Intent(this, Activity_reaction_test::class.java)
-            startActivity(intent)
-            Storage.reaction_attempt = false
+            if (Storage.reaction_attempt == false) {
+                Toast.makeText(this, "You allready pass the test", Toast.LENGTH_SHORT).show()
+            } else {
+                val intent = Intent(this, Activity_reaction_test::class.java)
+                startActivity(intent)
+                Storage.reaction_attempt = false
+            }
         }
     }
 
     private fun nextActivityIntelligent() {
         val startButton = findViewById<Button>(R.id.Inteligence_test_button)
         startButton.setOnClickListener {
-            val intent = Intent(this, Activity_intelligent_test::class.java)
-            startActivity(intent)
-            Storage.inteligence_attempt = false
+            if (Storage.inteligence_attempt == false) {
+                Toast.makeText(this, "You allready pass the test", Toast.LENGTH_SHORT).show()
+            } else {
+                val intent = Intent(this, Activity_intelligent_test::class.java)
+                startActivity(intent)
+                Storage.inteligence_attempt = false
+            }
         }
     }
 
     private fun nextActivityCISS() {
         val startButton = findViewById<Button>(R.id.CISS_test_button)
         startButton.setOnClickListener {
-            val intent = Intent(this, Activity_CISS::class.java)
-            startActivity(intent)
-            Storage.CISS_attempt = false
+            if (Storage.CISS_attempt == false) {
+                Toast.makeText(this, "You allready pass the test", Toast.LENGTH_SHORT).show()
+            } else {
+                val intent = Intent(this, Activity_CISS::class.java)
+                startActivity(intent)
+                Storage.CISS_attempt = false
+            }
         }
     }
 
@@ -94,7 +93,7 @@ class activity_tests_page : AppCompatActivity() {
 
     }
 
-    private fun ColorResult(){
+    private fun ColorResult() {
         val result = findViewById<TextView>(R.id.result_color_testpage)
         val progres = findViewById<ProgressBar>(R.id.progressBar_color_testpage)
         val sum = Storage.sum_color
