@@ -4,10 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
-import android.widget.Button
-import android.widget.CheckBox
-import android.widget.EditText
-import android.widget.ImageView
+import android.widget.*
 
 class RegistrationActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,45 +22,13 @@ class RegistrationActivity : AppCompatActivity() {
         val femaleCheckBox = findViewById<CheckBox>(R.id.femaleCheckBox)
         val maleCheckBox = findViewById<CheckBox>(R.id.maleCheckBox)
 
+
         // methods
-        comparePass(registerButton, passEdit, rPassEdit)
+        registerButton.setOnClickListener {
+            addUser(firstNameEdit, surnameEdit, loginEdit, passEdit, rPassEdit)
+        }
         backToLogin(backImage)
         chooseSex(maleCheckBox, femaleCheckBox)
-        /*isAllFilledUp(
-            firstNameEdit,
-            surnameEdit,
-            loginEdit,
-            passEdit,
-            rPassEdit,
-            registerButton,
-            femaleCheckBox,
-            maleCheckBox
-        )*/
-    }
-
-    private fun isAllFilledUp(
-        name: EditText,
-        surname: EditText,
-        login: EditText,
-        pass: EditText,
-        rPass: EditText,
-        button: Button,
-        c1: CheckBox,
-        c2: CheckBox
-    ) {
-        val str1 = name.text.toString()
-        val str2 = surname.text.toString()
-        val str3 = login.text.toString()
-        val str4 = pass.text.toString()
-        val str5 = rPass.text.toString()
-        button.setOnClickListener {
-            if (str1.isEmpty()) {
-                c1.isChecked = true
-            }
-            else {
-                c2.isChecked = false
-            }
-        }
     }
 
 
@@ -78,13 +43,36 @@ class RegistrationActivity : AppCompatActivity() {
         }
     }
 
-    private fun comparePass(button: Button, pass: EditText, rPass: EditText) {
-        button.setOnClickListener {
-            val str1 = pass.text.toString()
-            val str2 = rPass.text.toString()
-            if (str1 == str2) {
-                val intent = Intent(this, SecondActivity::class.java)
-                startActivity(intent)
+    private fun addUser(
+        name: EditText,
+        surname: EditText,
+        login: EditText,
+        password: EditText,
+        rPassword: EditText
+    ) {
+        val nam = name.text.toString()
+        val sur = surname.text.toString()
+        val log = login.text.toString()
+        val pas = password.text.toString()
+        val rPas = rPassword.text.toString()
+        val dataBaseHelper = DataBaseHelper(this)
+
+        if (nam.isEmpty() || sur.isEmpty() || log.isEmpty() || pas.isEmpty() || rPas.isEmpty()) {
+            Toast.makeText(this, "Empty fields", Toast.LENGTH_SHORT).show()
+        } else {
+            if (pas == rPas) {
+                val checkLogin = dataBaseHelper.checkLogin(log)
+                if (checkLogin){
+                    val user = Users(name = nam, surname = sur, login = log, password = pas)
+                    val insert = DataBaseHelper(applicationContext).insertUser(user)
+                    if (insert) {
+                        Toast.makeText(this, "Registered succesfully", Toast.LENGTH_SHORT).show()
+                    }
+                } else {
+                    Toast.makeText(this, "Login exists", Toast.LENGTH_SHORT).show()
+                }
+            } else {
+                Toast.makeText(this, "Check password", Toast.LENGTH_SHORT).show()
             }
         }
     }
