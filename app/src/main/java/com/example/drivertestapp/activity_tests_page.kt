@@ -12,8 +12,6 @@ class activity_tests_page : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tests_page)
-
-
         nextActivityColor()
         nextActivityIntelligent()
         nextActivityCISS()
@@ -28,22 +26,21 @@ class activity_tests_page : AppCompatActivity() {
     private fun nextActivityColor() {
         val startButton = findViewById<Button>(R.id.Color_perception_button)
         startButton.setOnClickListener {
-            if (Storage.color_attempt == false) {
-                Toast.makeText(this, "You allready pass the test", Toast.LENGTH_SHORT).show()
+            if (!Storage.color_attempt) {
+                Toast.makeText(this, "You've already passed the test", Toast.LENGTH_SHORT).show()
             } else {
                 val intent = Intent(this, Activity_color_test::class.java)
                 startActivity(intent)
                 Storage.color_attempt = false
             }
-
         }
     }
 
     private fun nextActivityReaction() {
         val startButton = findViewById<Button>(R.id.Reaction_test_button)
         startButton.setOnClickListener {
-            if (Storage.reaction_attempt == false) {
-                Toast.makeText(this, "You allready pass the test", Toast.LENGTH_SHORT).show()
+            if (!Storage.reaction_attempt) {
+                Toast.makeText(this, "You've already passed the test", Toast.LENGTH_SHORT).show()
             } else {
                 val intent = Intent(this, Activity_reaction_test::class.java)
                 startActivity(intent)
@@ -55,8 +52,8 @@ class activity_tests_page : AppCompatActivity() {
     private fun nextActivityIntelligent() {
         val startButton = findViewById<Button>(R.id.Inteligence_test_button)
         startButton.setOnClickListener {
-            if (Storage.inteligence_attempt == false) {
-                Toast.makeText(this, "You allready pass the test", Toast.LENGTH_SHORT).show()
+            if (!Storage.inteligence_attempt) {
+                Toast.makeText(this, "You've already passed the test", Toast.LENGTH_SHORT).show()
             } else {
                 val intent = Intent(this, Activity_intelligent_test::class.java)
                 startActivity(intent)
@@ -68,8 +65,8 @@ class activity_tests_page : AppCompatActivity() {
     private fun nextActivityCISS() {
         val startButton = findViewById<Button>(R.id.CISS_test_button)
         startButton.setOnClickListener {
-            if (Storage.CISS_attempt == false) {
-                Toast.makeText(this, "You allready pass the test", Toast.LENGTH_SHORT).show()
+            if (!Storage.CISS_attempt) {
+                Toast.makeText(this, "You've already passed the test", Toast.LENGTH_SHORT).show()
             } else {
                 val intent = Intent(this, Activity_CISS::class.java)
                 startActivity(intent)
@@ -86,7 +83,7 @@ class activity_tests_page : AppCompatActivity() {
         result.append(sum.toString())
         result.append("/30")
 
-        progres.setProgress(sum * (120 / 30))
+        progres.progress = sum * (120 / 30)
     }
 
     private fun CISSResult() {
@@ -101,6 +98,6 @@ class activity_tests_page : AppCompatActivity() {
         result.append(sum.toString())
         result.append("/10")
 
-        progres.setProgress(sum * (100 / 10))
+        progres.progress = sum * (100 / 10)
     }
 }

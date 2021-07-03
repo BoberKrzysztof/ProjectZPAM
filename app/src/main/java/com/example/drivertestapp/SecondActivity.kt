@@ -34,6 +34,9 @@ class SecondActivity : AppCompatActivity() {
         } else {
             val loginPassword = databaseHelper.signIn(log, pas)
             if (loginPassword){
+                eLogin.text.clear()
+                ePassword.text.clear()
+                Toast.makeText(this, "Hello $log", Toast.LENGTH_SHORT).show()
                 val intent = Intent(this, activity_tests_page::class.java)
                 startActivity(intent)
             } else {

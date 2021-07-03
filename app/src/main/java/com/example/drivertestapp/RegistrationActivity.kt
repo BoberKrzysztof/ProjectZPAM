@@ -25,7 +25,15 @@ class RegistrationActivity : AppCompatActivity() {
 
         // methods
         registerButton.setOnClickListener {
-            addUser(firstNameEdit, surnameEdit, loginEdit, passEdit, rPassEdit)
+            addUser(
+                firstNameEdit,
+                surnameEdit,
+                loginEdit,
+                passEdit,
+                rPassEdit,
+                femaleCheckBox,
+                maleCheckBox
+            )
         }
         backToLogin(backImage)
         chooseSex(maleCheckBox, femaleCheckBox)
@@ -48,7 +56,9 @@ class RegistrationActivity : AppCompatActivity() {
         surname: EditText,
         login: EditText,
         password: EditText,
-        rPassword: EditText
+        rPassword: EditText,
+        c1: CheckBox,
+        c2: CheckBox
     ) {
         val nam = name.text.toString()
         val sur = surname.text.toString()
@@ -57,16 +67,23 @@ class RegistrationActivity : AppCompatActivity() {
         val rPas = rPassword.text.toString()
         val dataBaseHelper = DataBaseHelper(this)
 
-        if (nam.isEmpty() || sur.isEmpty() || log.isEmpty() || pas.isEmpty() || rPas.isEmpty()) {
+        if (nam.isEmpty() || sur.isEmpty() || log.isEmpty() || pas.isEmpty() || rPas.isEmpty() || (!c1.isChecked && !c2.isChecked)) {
             Toast.makeText(this, "Empty fields", Toast.LENGTH_SHORT).show()
         } else {
             if (pas == rPas) {
                 val checkLogin = dataBaseHelper.checkLogin(log)
-                if (checkLogin){
+                if (checkLogin) {
                     val user = Users(name = nam, surname = sur, login = log, password = pas)
                     val insert = DataBaseHelper(applicationContext).insertUser(user)
                     if (insert) {
                         Toast.makeText(this, "Registered succesfully", Toast.LENGTH_SHORT).show()
+                        name.text.clear()
+                        surname.text.clear()
+                        login.text.clear()
+                        password.text.clear()
+                        rPassword.text.clear()
+                        c1.isChecked = false
+                        c2.isChecked = false
                     }
                 } else {
                     Toast.makeText(this, "Login exists", Toast.LENGTH_SHORT).show()

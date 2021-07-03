@@ -9,16 +9,9 @@ import android.view.View
 import android.widget.Button
 import android.widget.Chronometer
 import android.widget.TextView
+import android.widget.Toast
 
 class Activity_reaction_test : AppCompatActivity() {
-
-    var tMilliSec = 0L
-    var tBuff = 0L
-    var tStart = 0L
-    var tUpdate = 0L
-    var sec: Int = 0
-    var milliSec: Int = 0
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_reaction_test)
@@ -26,16 +19,14 @@ class Activity_reaction_test : AppCompatActivity() {
         val stopButton = findViewById<Button>(R.id.circle_button)
         val result = findViewById<TextView>(R.id.best_result)
 
+
         startButton.setOnClickListener {
-            run(result)
+            run()
         }
 
     }
 
-    private fun run(res: TextView){
-        tMilliSec = SystemClock.uptimeMillis() - tStart
-        tUpdate = tBuff + tMilliSec
-        milliSec = (tUpdate%1000).toInt()
-        res.text = String.format("%03d",milliSec)
+    private fun run(){
+
     }
 }

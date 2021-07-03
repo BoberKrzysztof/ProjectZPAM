@@ -13,8 +13,8 @@ class DataBaseHelper(context: Context) :
     SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
     companion object {
         private const val DATABASE_VERSION = 1
-        private const val DATABASE_NAME = "users.db"
-        private const val TAB_USERS = "users"
+        private const val DATABASE_NAME = "Users.db"
+        private const val TAB_USERS = "Users"
         private const val NAME = "name"
         private const val SURNAME = "surname"
         private const val LOGIN = "login"
@@ -24,7 +24,7 @@ class DataBaseHelper(context: Context) :
     override fun onCreate(db: SQLiteDatabase?) {
         db?.execSQL(
             "CREATE TABLE " + TAB_USERS + "(" + LOGIN + " TEXT PRIMARY KEY, " + NAME
-                    + " TEXT, " + SURNAME + " TEXT, " + PASSWORD + " TEXT" + ")"
+                    + " TEXT, " + SURNAME + " TEXT, " + PASSWORD + " TEXT"  + ")"
         )
     }
 
