@@ -13,23 +13,24 @@ class DataBaseHelper(context: Context) :
     SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
     companion object {
         private const val DATABASE_VERSION = 1
-        private const val DATABASE_NAME = "UsersDB.db"
+        private const val DATABASE_NAME = "UsersData.db"
         private const val TAB_USERS = "Users"
         private const val NAME = "name"
         private const val SURNAME = "surname"
         private const val LOGIN = "login"
         private const val PASSWORD = "password"
         private const val COLOR = "color"
-        private const val REACTION = "reaction"
+        private const val REACTION_BEST = "bestReaction"
+        private const val REACTION_AVERAGE = "averageReaction"
         private const val INTELLIGENCE = "intelligence"
-        private const val CISS = "ciss"
     }
 
     override fun onCreate(db: SQLiteDatabase?) {
         db?.execSQL(
             "CREATE TABLE " + TAB_USERS + "(" + LOGIN + " TEXT PRIMARY KEY, " + NAME
                     + " TEXT, " + SURNAME + " TEXT, " + PASSWORD + " TEXT, " + COLOR + " TEXT, " +
-                    REACTION + " TEXT, " + INTELLIGENCE + " TEXT" + ")"
+                    REACTION_BEST + " TEXT, " + REACTION_AVERAGE + " TEXT, " + INTELLIGENCE
+                    + " TEXT" + ")"
         )
     }
 
@@ -46,7 +47,8 @@ class DataBaseHelper(context: Context) :
         contentValues.put(LOGIN, user.login)
         contentValues.put(PASSWORD, user.password)
         contentValues.put(COLOR, Storage.sum_color.toString())
-        contentValues.put(REACTION, Storage.sum2.toString())
+        contentValues.put(REACTION_BEST, Storage.reaction_best_result_storage.toString())
+        contentValues.put(REACTION_AVERAGE, Storage.reaction_average_result_storage.toString())
         contentValues.put(INTELLIGENCE, (Storage.sum2 + Storage.sum).toString())
         val result: Long = db.insert(TAB_USERS, null, contentValues)
         return result != -1L
@@ -79,10 +81,39 @@ class DataBaseHelper(context: Context) :
         return cursor.getString(0)
     }
 
+    fun checkBestReaction(l: String): String {
+        val db = this.readableDatabase
+        val cursor = db.rawQuery("SELECT bestReaction FROM Users WHERE login = ?", arrayOf(l))
+        cursor.moveToFirst()
+        return cursor.getString(0)
+    }
+
+    fun checkAverageReaction(l: String): String {
+        val db = this.readableDatabase
+        val cursor = db.rawQuery("SELECT averageReaction FROM Users WHERE login = ?", arrayOf(l))
+        cursor.moveToFirst()
+        return cursor.getString(0)
+    }
+
     fun updateDataIntelligence(l: String): Boolean {
         val db = this.writableDatabase
         val contentValues = ContentValues()
         contentValues.put(INTELLIGENCE, (Storage.sum2 + Storage.sum).toString())
+        db.update(TAB_USERS, contentValues, "login = ?", arrayOf(l))
+        return true
+    }
+
+    fun updateDataBestReaction(l: String): Boolean {
+        val db = this.writableDatabase
+        val contentValues = ContentValues()
+        contentValues.put(REACTION_BEST, Storage.reaction_best_result_storage.toString())
+        db.update(TAB_USERS, contentValues, "login = ?", arrayOf(l))
+        return true
+    }
+    fun updateDataAverageReaction(l: String): Boolean {
+        val db = this.writableDatabase
+        val contentValues = ContentValues()
+        contentValues.put(REACTION_AVERAGE, Storage.reaction_average_result_storage.toString())
         db.update(TAB_USERS, contentValues, "login = ?", arrayOf(l))
         return true
     }

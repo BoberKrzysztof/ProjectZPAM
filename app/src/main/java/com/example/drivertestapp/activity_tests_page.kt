@@ -40,7 +40,7 @@ class activity_tests_page : AppCompatActivity() {
         val dataBaseHelper = DataBaseHelper(this).checkColor(l.toString()).toInt()
         val startButton = findViewById<Button>(R.id.Color_perception_button)
         startButton.setOnClickListener {
-            if (dataBaseHelper != 0) {
+            if (dataBaseHelper != -1) {
                 Toast.makeText(this, "You've already passed the test", Toast.LENGTH_SHORT).show()
             } else {
                 val intent = Intent(this, Activity_color_test::class.java)
@@ -54,12 +54,14 @@ class activity_tests_page : AppCompatActivity() {
     private fun nextActivityReaction() {
         val log = intent
         val l = log.getStringExtra("LOGIN")
+        val dataBaseHelper = DataBaseHelper(this).checkBestReaction(l.toString()).toInt()
         val startButton = findViewById<Button>(R.id.Reaction_test_button)
         startButton.setOnClickListener {
-            if (!Storage.reaction_attempt) {
+            if (dataBaseHelper != 0) {
                 Toast.makeText(this, "You've already passed the test", Toast.LENGTH_SHORT).show()
             } else {
                 val intent = Intent(this, Activity_reaction_test::class.java)
+                intent.putExtra("LOGIN", l)
                 startActivity(intent)
                 Storage.reaction_attempt = false
             }
@@ -72,7 +74,7 @@ class activity_tests_page : AppCompatActivity() {
         val dataBaseHelper = DataBaseHelper(this).checkIntelligence(l.toString()).toInt()
         val startButton = findViewById<Button>(R.id.Inteligence_test_button)
         startButton.setOnClickListener {
-            if (dataBaseHelper != 0) {
+            if (dataBaseHelper != -1) {
                 Toast.makeText(this, "You've already passed the test", Toast.LENGTH_SHORT).show()
             } else {
                 val intent = Intent(this, Activity_intelligent_test::class.java)
@@ -99,14 +101,18 @@ class activity_tests_page : AppCompatActivity() {
     private fun inteligenceResult() {
         val log = intent
         val l = log.getStringExtra("LOGIN")
-        val db = DataBaseHelper(this).checkIntelligence(l.toString()).toInt()
+        val db = DataBaseHelper(this).checkIntelligence(l.toString())
         val result = findViewById<TextView>(R.id.inteligence_result)
         val progres = findViewById<ProgressBar>(R.id.progressBar_inteligence_testPage)
 
-        result.append(db.toString())
-        result.append("/30")
-
-        progres.progress = db * (120 / 30)
+        if (db.toInt() != -1){
+            result.text = "Result: $db/30"
+            val value = db.toInt() * (120 / 30)
+            progres.progress = value
+        } else {
+            result.text = "Result:"
+            progres.progress = 0
+        }
     }
 
     private fun CISSResult() {
@@ -116,21 +122,30 @@ class activity_tests_page : AppCompatActivity() {
     private fun ColorResult() {
         val log = intent
         val l = log.getStringExtra("LOGIN")
-        val db = DataBaseHelper(this).checkColor(l.toString()).toInt()
+        val db = DataBaseHelper(this).checkColor(l.toString())
         val result = findViewById<TextView>(R.id.result_color_testpage)
         val progres = findViewById<ProgressBar>(R.id.progressBar_color_testpage)
 
-        result.append(db.toString())
-        result.append("/10")
-        val value = db * 10
-        progres.progress = value
+        if (db.toInt() != -1) {
+            result.text = "Result: $db/10"
+            val value = db.toInt() * 10
+            progres.progress = value
+        } else {
+            result.text = "Result:"
+            progres.progress = 0
+        }
+
     }
 
     private fun ReactionResult(){
+        val log = intent
+        val l = log.getStringExtra("LOGIN")
+        val db1 = DataBaseHelper(this).checkBestReaction(l.toString())
+        val db2 = DataBaseHelper(this).checkAverageReaction(l.toString())
         val best_result = findViewById<TextView>(R.id.reaction_result_best_testpage)
         val average_result = findViewById<TextView>(R.id.reaction_result_average_testpage)
 
-        best_result.append(Storage.reaction_best_result_storage.toString())
-        average_result.append(Storage.reaction_average_result_storage.toString())
+        best_result.text = "Best: $db1 ms"
+        average_result.text = "Average: $db2 ms"
     }
 }
