@@ -32,6 +32,8 @@ class Activity_color_test : AppCompatActivity() {
         var sum = 0
         var i = 0
         imageView.setImageResource(images[i])
+        val log = intent
+        val l = log.getStringExtra("LOGIN")
 
         button.setOnClickListener {
             if (editText.text.toString() == "") {
@@ -41,14 +43,13 @@ class Activity_color_test : AppCompatActivity() {
                     sum += 1
                 }
                 if (i == images.size - 1) {
-                    Toast.makeText(
-                        this,
-                        "Correct answers: ${sum * 100/values.size}%",
-                        Toast.LENGTH_SHORT
-                    ).show()
                     Storage.sum_color = sum
-                    val intent = Intent(this, activity_tests_page::class.java)
-                    startActivity(intent)
+                    val updateColor = DataBaseHelper(this).updateData(l.toString())
+                    if (updateColor) {
+                        val intent = Intent(this, activity_tests_page::class.java)
+                        intent.putExtra("LOGIN", l)
+                        startActivity(intent)
+                    }
                 } else {
                     i++
                 }

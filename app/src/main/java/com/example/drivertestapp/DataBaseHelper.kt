@@ -19,12 +19,13 @@ class DataBaseHelper(context: Context) :
         private const val SURNAME = "surname"
         private const val LOGIN = "login"
         private const val PASSWORD = "password"
+        private const val COLOR = "color"
     }
 
     override fun onCreate(db: SQLiteDatabase?) {
         db?.execSQL(
             "CREATE TABLE " + TAB_USERS + "(" + LOGIN + " TEXT PRIMARY KEY, " + NAME
-                    + " TEXT, " + SURNAME + " TEXT, " + PASSWORD + " TEXT"  + ")"
+                    + " TEXT, " + SURNAME + " TEXT, " + PASSWORD + " TEXT, " + COLOR + " TEXT" + ")"
         )
     }
 
@@ -40,6 +41,7 @@ class DataBaseHelper(context: Context) :
         contentValues.put(SURNAME, user.surname)
         contentValues.put(LOGIN, user.login)
         contentValues.put(PASSWORD, user.password)
+        contentValues.put(COLOR, Storage.sum_color.toString())
         val result: Long = db.insert(TAB_USERS, null, contentValues)
         return result != -1L
     }
@@ -57,4 +59,18 @@ class DataBaseHelper(context: Context) :
         return cursor.count > 0
     }
 
+    fun checkColor(l: String): String {
+        val db = this.readableDatabase
+        val cursor = db.rawQuery("SELECT color FROM users WHERE login = ?", arrayOf(l))
+        cursor.moveToFirst()
+        return cursor.getString(0)
+    }
+
+    fun updateData(l: String): Boolean {
+        val db = this.writableDatabase
+        val contentValues = ContentValues()
+        contentValues.put(COLOR, Storage.sum_color.toString())
+        db.update(TAB_USERS, contentValues, "login = ?", arrayOf(l))
+        return true
+    }
 }

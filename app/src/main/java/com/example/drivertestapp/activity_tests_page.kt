@@ -17,19 +17,32 @@ class activity_tests_page : AppCompatActivity() {
         nextActivityCISS()
         nextActivityReaction()
 
+        logOut()
+
         inteligenceResult()
         CISSResult()
         ColorResult()
     }
 
+    private fun logOut() {
+        val logout = findViewById<Button>(R.id.logout)
+        logout.setOnClickListener {
+            val intent = Intent(this, SecondActivity::class.java)
+            startActivity(intent)
+        }
+    }
 
     private fun nextActivityColor() {
+        val log = intent
+        val l = log.getStringExtra("LOGIN")
+        val dataBaseHelper = DataBaseHelper(this).checkColor(l.toString()).toInt()
         val startButton = findViewById<Button>(R.id.Color_perception_button)
         startButton.setOnClickListener {
-            if (!Storage.color_attempt) {
+            if (dataBaseHelper != 0) {
                 Toast.makeText(this, "You've already passed the test", Toast.LENGTH_SHORT).show()
             } else {
                 val intent = Intent(this, Activity_color_test::class.java)
+                intent.putExtra("LOGIN", l)
                 startActivity(intent)
                 Storage.color_attempt = false
             }
@@ -37,6 +50,8 @@ class activity_tests_page : AppCompatActivity() {
     }
 
     private fun nextActivityReaction() {
+        val log = intent
+        val l = log.getStringExtra("LOGIN")
         val startButton = findViewById<Button>(R.id.Reaction_test_button)
         startButton.setOnClickListener {
             if (!Storage.reaction_attempt) {
@@ -91,13 +106,15 @@ class activity_tests_page : AppCompatActivity() {
     }
 
     private fun ColorResult() {
+        val log = intent
+        val l = log.getStringExtra("LOGIN")
+        val db = DataBaseHelper(this).checkColor(l.toString()).toInt()
         val result = findViewById<TextView>(R.id.result_color_testpage)
         val progres = findViewById<ProgressBar>(R.id.progressBar_color_testpage)
-        val sum = Storage.sum_color
 
-        result.append(sum.toString())
+        result.append(db.toString())
         result.append("/10")
-
-        progres.progress = sum * (100 / 10)
+        val value = db * 10
+        progres.progress = value
     }
 }

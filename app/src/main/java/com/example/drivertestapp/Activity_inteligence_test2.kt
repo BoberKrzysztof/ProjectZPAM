@@ -120,7 +120,7 @@ class Activity_inteligence_test2 : AppCompatActivity() {
                     i++
                     val incriment = (120/30)
                     progress_procent.incrementProgressBy(incriment)
-                    procent_text.setText((progress_procent.progress/1.2).toInt().toString())
+                    procent_text.text = (progress_procent.progress/1.2).toInt().toString()
                     procent_text.append("/100%")
                     question_images.setImageResource(questions[i])
                     answer_upper_image.setImageResource(answers_upper_line[i])
@@ -131,7 +131,7 @@ class Activity_inteligence_test2 : AppCompatActivity() {
 
                 if (i == questions.size - 2) {
                     //Toast.makeText(this, "Your result: $sum/" + questions.size , Toast.LENGTH_SHORT).show()
-                    next.setText("Finish")
+                    next.text = "Finish"
 
                 }
                 if (i < questions.size - 1) {
