@@ -130,7 +130,7 @@ class activity_tests_page : AppCompatActivity() {
         val best_result = findViewById<TextView>(R.id.reaction_result_best_testpage)
         val average_result = findViewById<TextView>(R.id.reaction_result_average_testpage)
 
-        best_result.setText(Storage.reaction_best_result_storage.toString())
-        average_result.setText(Storage.reaction_average_result_storage.toString())
+        best_result.append(Storage.reaction_best_result_storage.toString())
+        average_result.append(Storage.reaction_average_result_storage.toString())
     }
 }
