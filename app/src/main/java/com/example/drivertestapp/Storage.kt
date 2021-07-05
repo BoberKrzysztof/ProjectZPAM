@@ -11,5 +11,7 @@ class Storage {
         var CISS_attempt: Boolean = true
         var color_attempt: Boolean = true
         var reaction_attempt: Boolean = true
+        var reaction_best_result_storage: Int = 0
+        var reaction_average_result_storage: Int = 0
     }
 }

@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
+import org.w3c.dom.Text
 
 class activity_tests_page : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,6 +23,7 @@ class activity_tests_page : AppCompatActivity() {
         inteligenceResult()
         CISSResult()
         ColorResult()
+        ReactionResult()
     }
 
     private fun logOut() {
@@ -116,5 +118,13 @@ class activity_tests_page : AppCompatActivity() {
         result.append("/10")
         val value = db * 10
         progres.progress = value
+    }
+
+    private fun ReactionResult(){
+        val best_result = findViewById<TextView>(R.id.reaction_result_best_testpage)
+        val average_result = findViewById<TextView>(R.id.reaction_result_average_testpage)
+
+        best_result.setText(Storage.reaction_best_result_storage.toString())
+        average_result.setText(Storage.reaction_average_result_storage.toString())
     }
 }

@@ -1,5 +1,6 @@
 package com.example.drivertestapp
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.SystemClock
@@ -27,7 +28,7 @@ class Activity_reaction_test : AppCompatActivity() {
         var i = 0
         var result_list = arrayOf<String>()
 
-        fun start () {
+        fun start() {
             startButton.setOnClickListener {
                 i++
                 val delay = (1000..3000).random()
@@ -55,6 +56,7 @@ class Activity_reaction_test : AppCompatActivity() {
 
                     best_result.setText(largest)
                     best_result.append(" milliseconds")
+                    Storage.reaction_best_result_storage = largest.toInt()
 
                     var average = 0
                     for (ms in result_list) average += ms.toInt()
@@ -63,11 +65,20 @@ class Activity_reaction_test : AppCompatActivity() {
 
                     average_result.setText(average.toString())
                     average_result.append(" milliseconds")
+                    Storage.reaction_average_result_storage = average
                 }
             }
         }
 
-        start()
+        if (i < 4) {
+            start()
+        } else {
+            startButton.setText("Return")
+            startButton.setOnClickListener{
+                val intent = Intent(this, activity_tests_page::class.java)
+                startActivity(intent)
+            }
+        }
 
         /*val result = milisec[7].toString() + milisec[8].toString() + milisec[9].toString()
         result_list += (result)

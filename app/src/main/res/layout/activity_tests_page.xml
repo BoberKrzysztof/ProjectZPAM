@@ -11,8 +11,8 @@
         android:layout_width="175dp"
         android:layout_height="60dp"
         android:layout_marginTop="150dp"
-        android:text="Reaction test"
         android:background="@drawable/button_design"
+        android:text="Reaction test"
         app:backgroundTint="@null"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -31,10 +31,10 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.459"
+        app:layout_constraintHorizontal_bias="0.513"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.761" />
 
     <Button
         android:id="@+id/Color_perception_button"
@@ -42,8 +42,8 @@
         android:layout_height="60dp"
         android:layout_marginStart="200dp"
         android:layout_marginTop="375dp"
-        android:text="Color perception test"
         android:background="@drawable/button_design"
+        android:text="Color perception test"
         app:backgroundTint="@null"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -56,8 +56,8 @@
         android:layout_height="60dp"
         android:layout_marginTop="375dp"
         android:layout_marginEnd="200dp"
-        android:text="Intelligence test"
         android:background="@drawable/button_design"
+        android:text="Intelligence test"
         app:backgroundTint="@null"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -68,8 +68,8 @@
         android:id="@+id/CISS_test_button"
         android:layout_width="175dp"
         android:layout_height="60dp"
-        android:text="CISS questionnaire"
         android:background="@drawable/button_design"
+        android:text="CISS questionnaire"
         app:backgroundTint="@null"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -99,8 +99,8 @@
         android:layout_marginTop="550dp"
         android:layout_marginEnd="200dp"
         android:indeterminateOnly="false"
-        android:progressDrawable="@drawable/circle_progressbar"
         android:max="120"
+        android:progressDrawable="@drawable/circle_progressbar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -137,11 +137,27 @@
 
 
     <TextView
-        android:id="@+id/textView9"
+        android:id="@+id/reaction_result_best_testpage"
         android:layout_width="150dp"
         android:layout_height="25dp"
         android:layout_marginTop="250dp"
-        android:text="Result:"
+        android:layout_marginEnd="200dp"
+        android:text="Best result: "
+        android:textAlignment="viewStart"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/reaction_result_average_testpage"
+        android:layout_width="150dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="200dp"
+        android:layout_marginTop="250dp"
+        android:text="Average result: "
         android:textAlignment="viewStart"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         android:textSize="20sp"
@@ -235,12 +251,17 @@
 
     <Button
         android:id="@+id/logout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="11dp"
-        android:layout_marginTop="77dp"
+        android:layout_width="60dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="340dp"
+        android:layout_marginBottom="650dp"
+        android:background="@drawable/button_design"
         android:text="Log Out"
+        android:textSize="10sp"
+        app:backgroundTint="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

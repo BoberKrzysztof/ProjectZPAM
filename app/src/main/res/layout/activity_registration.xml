@@ -10,8 +10,9 @@
         android:id="@+id/imageView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
+        android:layout_marginBottom="625dp"
         android:contentDescription="@string/obraz"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,9 +23,11 @@
         android:id="@+id/backImage"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginEnd="350dp"
+        android:layout_marginBottom="575dp"
         android:contentDescription="@string/obraz"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2"
         app:srcCompat="@drawable/backarrow" />
@@ -33,180 +36,160 @@
         android:id="@+id/registerButton"
         android:layout_width="272dp"
         android:layout_height="58dp"
-        android:layout_marginTop="20dp"
-        android:text="@string/registerLabel"
         android:background="@drawable/button_design"
-        app:backgroundTint="@null"
+        android:text="@string/registerLabel"
         android:textSize="20sp"
+        app:backgroundTint="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/femaleCheckBox" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
-    <EditText
-        android:id="@+id/firstNameEdit"
-        android:layout_width="wrap_content"
-        android:layout_height="45dp"
-        android:layout_marginTop="35dp"
-        android:layout_marginEnd="60dp"
-        android:ems="10"
-        android:importantForAutofill="no"
-        android:inputType="textPersonName"
-        android:labelFor="@id/firstNameEdit"
-        android:text="@string/empty"
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="390dp"
+        android:layout_height="300dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="150dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
-
-    <EditText
-        android:id="@+id/passEdit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="60dp"
-        android:ems="10"
-        android:importantForAutofill="no"
-        android:inputType="textPassword"
-        android:labelFor="@id/passEdit"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginEdit" />
-
-    <EditText
-        android:id="@+id/surnameEdit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="60dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="@string/empty"
-        android:labelFor="@id/surnameEdit"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/firstNameEdit"
-        android:importantForAutofill="no" />
-
-    <EditText
-        android:id="@+id/loginEdit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="60dp"
-        android:ems="10"
-        android:importantForAutofill="no"
-        android:inputType="textPersonName"
-        android:labelFor="@id/loginEdit"
-        android:text="@string/empty"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/surnameEdit" />
-
-    <EditText
-        android:id="@+id/rPassEdit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="60dp"
-        android:ems="10"
-        android:importantForAutofill="no"
-        android:inputType="textPassword"
-        android:labelFor="@id/rPassEdit"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passEdit" />
-
-    <TextView
-        android:id="@+id/firstNameLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="8dp"
-        android:text="@string/imie"
-        android:textAlignment="textEnd"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toStartOf="@+id/firstNameEdit"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView2">
 
-    <CheckBox
-        android:id="@+id/femaleCheckBox"
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:layout_marginTop="18dp"
-        android:layout_marginEnd="60dp"
-        android:text="@string/female"
-        app:layout_constraintEnd_toStartOf="@+id/maleCheckBox"
-        app:layout_constraintTop_toBottomOf="@+id/rPassEdit" />
+        <LinearLayout
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-    <CheckBox
-        android:id="@+id/maleCheckBox"
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:layout_marginTop="18dp"
-        android:layout_marginEnd="70dp"
-        android:text="@string/male"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rPassEdit" />
+            <TextView
+                android:id="@+id/firstNameLabel"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginBottom="0dp"
+                android:gravity="center|end"
+                android:text="@string/imie"
+                android:textSize="16sp" />
 
-    <TextView
-        android:id="@+id/surnameLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:layout_marginTop="27dp"
-        android:layout_marginEnd="8dp"
-        android:text="@string/nazwisko"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toStartOf="@+id/surnameEdit"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/firstNameLabel" />
+            <TextView
+                android:id="@+id/surnameLabel"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginBottom="0dp"
+                android:gravity="center|end"
+                android:text="@string/nazwisko"
+                android:textSize="16sp" />
 
-    <TextView
-        android:id="@+id/loginLabelR"
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:layout_marginTop="27dp"
-        android:layout_marginEnd="8dp"
-        android:text="@string/loginLabel"
-        android:textAlignment="textEnd"
-        app:layout_constraintEnd_toStartOf="@+id/loginEdit"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/surnameLabel" />
+            <TextView
+                android:id="@+id/loginLabelR"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginBottom="0dp"
+                android:gravity="center|end"
+                android:text="@string/loginLabel"
+                android:textAlignment="textEnd" />
 
-    <TextView
-        android:id="@+id/passLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:layout_marginTop="27dp"
-        android:layout_marginEnd="8dp"
-        android:text="@string/passwordLabel"
-        android:textAlignment="viewEnd"
-        app:layout_constraintEnd_toStartOf="@+id/passEdit"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginLabelR" />
+            <TextView
+                android:id="@+id/passLabel"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginBottom="0dp"
+                android:gravity="center|end"
+                android:text="@string/passwordLabel"
+                android:textAlignment="viewEnd" />
 
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="27dp"
-        android:layout_marginEnd="8dp"
-        android:text="@string/repeatPass"
-        android:textAlignment="viewEnd"
-        app:layout_constraintEnd_toStartOf="@+id/rPassEdit"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passLabel" />
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginBottom="0dp"
+                android:gravity="center|end"
+                android:text="@string/repeatPass"
+                android:textAlignment="viewEnd" />
 
-    <TextView
-        android:id="@+id/sexLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="8dp"
-        android:text="@string/sex"
-        android:textAlignment="viewEnd"
-        app:layout_constraintEnd_toStartOf="@+id/femaleCheckBox"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+            <TextView
+                android:id="@+id/sexLabel"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center|end"
+                android:text="@string/sex"
+                android:textAlignment="viewEnd" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="200dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="40dp"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/firstNameEdit"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:ems="10"
+                android:importantForAutofill="no"
+                android:inputType="textPersonName"
+                android:labelFor="@id/firstNameEdit"
+                android:text="@string/empty" />
+
+            <EditText
+                android:id="@+id/surnameEdit"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:ems="10"
+                android:importantForAutofill="no"
+                android:inputType="textPersonName"
+                android:labelFor="@id/surnameEdit"
+                android:text="@string/empty" />
+
+            <EditText
+                android:id="@+id/loginEdit"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:ems="10"
+                android:importantForAutofill="no"
+                android:inputType="textPersonName"
+                android:labelFor="@id/loginEdit"
+                android:text="@string/empty" />
+
+            <EditText
+                android:id="@+id/passEdit"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:ems="10"
+                android:importantForAutofill="no"
+                android:inputType="textPassword"
+                android:labelFor="@id/passEdit" />
+
+            <EditText
+                android:id="@+id/rPassEdit"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:ems="10"
+                android:importantForAutofill="no"
+                android:inputType="textPassword"
+                android:labelFor="@id/rPassEdit" />
+
+            <LinearLayout
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/femaleCheckBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="0dp"
+                    android:text="@string/female" />
+
+                <CheckBox
+                    android:id="@+id/maleCheckBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="50dp"
+                    android:text="@string/male" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
