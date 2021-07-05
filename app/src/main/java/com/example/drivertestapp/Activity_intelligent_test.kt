@@ -132,9 +132,15 @@ class Activity_intelligent_test : AppCompatActivity() {
                             if (answer == list_answers[i]){
                                 sum++
                             }
+                            val log = intent
+                            val l = log.getStringExtra("LOGIN")
                             Storage.sum = sum
-                            val intent = Intent(this, Activity_inteligence_test2::class.java)
-                            startActivity(intent)
+                            val updateData = DataBaseHelper(this).updateDataIntelligence(l.toString())
+                            if (updateData){
+                                val intent = Intent(this, Activity_inteligence_test2::class.java)
+                                intent.putExtra("LOGIN", l)
+                                startActivity(intent)
+                            }
                         }
                     }
                 }

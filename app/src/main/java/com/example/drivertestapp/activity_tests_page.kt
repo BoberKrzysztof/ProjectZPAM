@@ -67,12 +67,16 @@ class activity_tests_page : AppCompatActivity() {
     }
 
     private fun nextActivityIntelligent() {
+        val log = intent
+        val l = log.getStringExtra("LOGIN")
+        val dataBaseHelper = DataBaseHelper(this).checkIntelligence(l.toString()).toInt()
         val startButton = findViewById<Button>(R.id.Inteligence_test_button)
         startButton.setOnClickListener {
-            if (!Storage.inteligence_attempt) {
+            if (dataBaseHelper != 0) {
                 Toast.makeText(this, "You've already passed the test", Toast.LENGTH_SHORT).show()
             } else {
                 val intent = Intent(this, Activity_intelligent_test::class.java)
+                intent.putExtra("LOGIN", l)
                 startActivity(intent)
                 Storage.inteligence_attempt = false
             }
@@ -93,14 +97,16 @@ class activity_tests_page : AppCompatActivity() {
     }
 
     private fun inteligenceResult() {
+        val log = intent
+        val l = log.getStringExtra("LOGIN")
+        val db = DataBaseHelper(this).checkIntelligence(l.toString()).toInt()
         val result = findViewById<TextView>(R.id.inteligence_result)
         val progres = findViewById<ProgressBar>(R.id.progressBar_inteligence_testPage)
-        val sum = Storage.sum2
 
-        result.append(sum.toString())
+        result.append(db.toString())
         result.append("/30")
 
-        progres.progress = sum * (120 / 30)
+        progres.progress = db * (120 / 30)
     }
 
     private fun CISSResult() {
