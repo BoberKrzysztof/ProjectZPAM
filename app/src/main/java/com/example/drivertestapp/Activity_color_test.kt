@@ -44,7 +44,7 @@ class Activity_color_test : AppCompatActivity() {
                 }
                 if (i == images.size - 1) {
                     Storage.sum_color = sum
-                    val updateColor = DataBaseHelper(this).updateData(l.toString())
+                    val updateColor = DataBaseHelper(this).updateDataColor(l.toString())
                     if (updateColor) {
                         val intent = Intent(this, activity_tests_page::class.java)
                         intent.putExtra("LOGIN", l)

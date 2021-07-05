@@ -193,10 +193,15 @@ class Activity_inteligence_test2 : AppCompatActivity() {
                             if (answer == list_answers[i]){
                                 sum++
                             }
-
+                            val log = intent
+                            val l = log.getStringExtra("LOGIN")
                             Storage.sum2 = sum
-                            val intent = Intent(this, activity_tests_page::class.java)
-                            startActivity(intent)
+                            val updateData = DataBaseHelper(this).updateDataIntelligence(l.toString())
+                            if (updateData){
+                                val intent = Intent(this, activity_tests_page::class.java)
+                                intent.putExtra("LOGIN", l)
+                                startActivity(intent)
+                            }
                         }
                     }
                 }
