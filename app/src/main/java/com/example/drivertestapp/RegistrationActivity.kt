@@ -69,6 +69,8 @@ class RegistrationActivity : AppCompatActivity() {
 
         if (nam.isEmpty() || sur.isEmpty() || log.isEmpty() || pas.isEmpty() || rPas.isEmpty() || (!c1.isChecked && !c2.isChecked)) {
             Toast.makeText(this, "Empty fields", Toast.LENGTH_SHORT).show()
+        } else if (pas.length < 6) {
+            Toast.makeText(this, "Password should contain minimum 6 signs", Toast.LENGTH_SHORT).show()
         } else {
             if (pas == rPas) {
                 val checkLogin = dataBaseHelper.checkLogin(log)
