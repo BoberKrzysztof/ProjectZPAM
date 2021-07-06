@@ -19,6 +19,7 @@ class Activity_reaction_test : AppCompatActivity() {
         val l = log.getStringExtra("LOGIN")
         val startButton = findViewById<Button>(R.id.start_button)
         val red = findViewById<Button>(R.id.red_button)
+        red.setText(" ")
         val green = findViewById<Button>(R.id.green_button)
         green.visibility = View.GONE
         val best_result = findViewById<TextView>(R.id.best_result)
@@ -32,6 +33,7 @@ class Activity_reaction_test : AppCompatActivity() {
         fun start() {
             startButton.setOnClickListener {
                 i++
+                red.setText("Wait")
                 val delay = (1000..3000).random()
                 SystemClock.sleep(delay.toLong())
                 time.base = SystemClock.elapsedRealtime()
@@ -43,6 +45,7 @@ class Activity_reaction_test : AppCompatActivity() {
                     val milisec = (SystemClock.elapsedRealtime() - time.base).toString()
                     time_text.text = milisec
                     time_text.append(" ms")
+                    red.setText(" ")
                     green.visibility = View.GONE
                     red.visibility = View.VISIBLE
 
